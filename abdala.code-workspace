@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "🌐 Web",
+      "path": "./apps/web/src"
+    },
+    {
+      "name": "Monorepo",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "terminal.integrated.cwd": "${workspaceFolder:Monorepo}"
+  }
+}

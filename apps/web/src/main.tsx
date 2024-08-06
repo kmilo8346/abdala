@@ -1,7 +1,20 @@
-import { StrictMode } from 'react';
+import { StrictMode, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { LoginPage, RootPage } from './pages';
 
-import App from './app/app';
+export function App() {
+  const [logged, setLogged] = useState(false);
+
+  const handleLoginIn = () => {
+    setLogged(true);
+  };
+
+  if (!logged) {
+    return <LoginPage onLoginIn={handleLoginIn} />;
+  }
+
+  return <RootPage />;
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
