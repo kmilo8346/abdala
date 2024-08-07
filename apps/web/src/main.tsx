@@ -1,6 +1,9 @@
 import { StrictMode, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { LoginPage, RootPage } from './pages';
+import { BrowserRouter, } from 'react-router-dom';
+import Router from './routes/routes';
+
 
 export function App() {
   const [logged, setLogged] = useState(false);
@@ -21,6 +24,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 );
