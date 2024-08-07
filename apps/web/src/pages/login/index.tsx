@@ -1,45 +1,49 @@
 import { useState, ChangeEvent } from 'react';
 import styles from './index.module.scss';
 
+interface Errors {
+  email?: string;
+  password?: string;
+}
+
 interface LoginPageProps {
   onLoginIn: () => void;
 }
 
 export function LoginPage(props: LoginPageProps) {
   const handleLogin = () => {
-    if (validateForm()){
-    // Enviar usuario y password a la server
-    // Si el usuario y password son correctos
-    // Guardar el token(llave) en el local storage
-    // Llama a la funcion onLoginIn
-    props.onLoginIn();
+    if (validateForm()) {
+      // Enviar usuario y password a la server
+      // Si el usuario y password son correctos
+      // Guardar el token(llave) en el local storage
+      // Llama a la funcion onLoginIn
+      props.onLoginIn();
     }
   };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<Errors>({});
 
   const validateEmail = (email: string): boolean => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   };
-  
-  
+
   const validateForm = (): boolean => {
-    const newErrors: { email?: string; password?: string } = {};
+    const newErrors: Errors = {};
     if (!email) {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(email)) {
       newErrors.email = 'Invalid email address';
     }
-    
+
     if (password.length === 0) {
       newErrors.password = 'Password is required';
     } else if (password.length <= 8) {
       newErrors.password = 'Password needs at least 8 characters';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -51,11 +55,7 @@ export function LoginPage(props: LoginPageProps) {
     } else if (name === 'password') {
       setPassword(value);
     }
-  
-    
   };
-  
-
 
   // Tarea
   // Pinta un formulario
@@ -74,33 +74,32 @@ export function LoginPage(props: LoginPageProps) {
     <>
       <div className={styles.root}>
         <div>
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Type your email" 
-            value={email} 
-            onChange={handleChange} 
+          <input
+            type="email"
+            name="email"
+            placeholder="Type your email"
+            value={email}
+            onChange={handleChange}
           />
           {errors.email && <span className={styles.error}>{errors.email}</span>}
         </div>
         <div>
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Type your password" 
-            value={password} 
-            onChange={handleChange} 
+          <input
+            type="password"
+            name="password"
+            placeholder="Type your password"
+            value={password}
+            onChange={handleChange}
           />
-          {errors.password && <span className={styles.error}>{errors.password}</span>}
+          {errors.password && (
+            <span className={styles.error}>{errors.password}</span>
+          )}
         </div>
         <button onClick={handleLogin}>Log In</button>
       </div>
       <a href=''>Create Account</a>
     </>
-  
   );
 }
 
 export default LoginPage;
-
-
