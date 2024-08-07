@@ -1,3 +1,4 @@
+import { useState, ChangeEvent } from 'react';
 import styles from './index.module.scss';
 
 interface LoginPageProps {
@@ -6,12 +7,55 @@ interface LoginPageProps {
 
 export function LoginPage(props: LoginPageProps) {
   const handleLogin = () => {
+    if (validateForm()){
     // Enviar usuario y password a la server
     // Si el usuario y password son correctos
     // Guardar el token(llave) en el local storage
     // Llama a la funcion onLoginIn
     props.onLoginIn();
+    }
   };
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
+
+  const validateEmail = (email: string): boolean => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+  
+  
+  const validateForm = (): boolean => {
+    const newErrors: { email?: string; password?: string } = {};
+    if (!email) {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(email)) {
+      newErrors.email = 'Invalid email address';
+    }
+    
+    if (!password) {
+      newErrors.password = 'Password is required';
+    }
+    if (password.length <= 7) {
+      newErrors.password = 'Password needs at least 8 characters';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  
+    
+  };
+  
+
 
   // Tarea
   // Pinta un formulario
@@ -27,10 +71,36 @@ export function LoginPage(props: LoginPageProps) {
   // }
 
   return (
-    <div className={styles.root}>
-      <button onClick={handleLogin}>Iniciar sesión</button>
-    </div>
+    <>
+      <div className={styles.root}>
+        <div>
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Type your email" 
+            value={email} 
+            onChange={handleChange} 
+          />
+          {errors.email && <span className={styles.error}>{errors.email}</span>}
+        </div>
+        <div>
+          <input 
+            type="password" 
+            name="password" 
+            placeholder="Type your password" 
+            value={password} 
+            onChange={handleChange} 
+          />
+          {errors.password && <span className={styles.error}>{errors.password}</span>}
+        </div>
+        <button onClick={handleLogin}>Log In</button>
+      </div>
+      <p>Create Account</p>
+    </>
+  
   );
 }
 
 export default LoginPage;
+
+

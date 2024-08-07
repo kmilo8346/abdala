@@ -1,2 +1,53 @@
 .root {
+    position: relative;
+    display: flex;
+    padding: 30px 20px;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 5px;
 }
+div{
+    display: flex;
+    flex-direction: column;
+}
+input {
+    text-align: center;
+    font-size: 12px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    
+}
+
+button{
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(241, 127, 127);
+    color: #fff;
+    box-shadow: none;
+}
+
+button:hover{
+    box-shadow: none;
+    background-color: rgb(237, 86, 86);
+    transition: linear ease-in-out 0.5s;
+}
+
+p{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
