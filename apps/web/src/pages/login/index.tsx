@@ -34,12 +34,12 @@ export function LoginPage(props: LoginPageProps) {
       newErrors.email = 'Invalid email address';
     }
     
-    if (!password) {
+    if (password.length === 0) {
       newErrors.password = 'Password is required';
-    }
-    if (password.length <= 7) {
+    } else if (password.length <= 8) {
       newErrors.password = 'Password needs at least 8 characters';
     }
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
