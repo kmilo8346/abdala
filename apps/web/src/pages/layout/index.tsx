@@ -13,7 +13,7 @@ import { MyCoursesPage } from '../my-courses';
 // TODO:
 // 1- Agregar un logo al header
 // 2- Aregar el ícono de usuario al header
-// 3- Agregar un menú desplegable al ícono de usuario [Mis cursos, Mis creaciones, Cerrar sesión]
+// 3- Mejora el diseño del menu en el header, tiene que mostrar cuando se haga header
 
 // TODO
 // ** El card es un componente reutilizable **
@@ -22,24 +22,23 @@ import { MyCoursesPage } from '../my-courses';
 // 3- Crear pagina de mis cursos
 
 export function LayoutPage() {
+  const handleLogoClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    console.log(event);
+  };
+
   return (
     <Router>
       <div className={styles.root}>
         <header className={styles.header}>
-          <div className={styles.logo} />
+          <div className={styles.logo} onClick={handleLogoClick} />
+
+          <div className={styles.menu}>
+            <a href="/courses">Courses</a>
+            <a href="/creations">Creations</a>
+            <a href="/creations">Creations</a>
+          </div>
         </header>
         <section className={styles.body}>
-          <ul>
-            <li>
-              <a href="/courses">Courses</a>
-            </li>
-            <li>
-              <a href="/creations">Creations</a>
-            </li>
-            <li>
-              <a href="/my-courses">My Courses</a>
-            </li>
-          </ul>
           <br />
           <br />
 

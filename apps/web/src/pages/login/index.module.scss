@@ -37,12 +37,12 @@
       background-color: rgb(241, 127, 127);
       color: #fff;
       box-shadow: none;
-    }
 
-    button:hover {
-      box-shadow: none;
-      background-color: rgb(237, 86, 86);
-      transition: linear ease-in-out 0.5s;
+      &:hover {
+        box-shadow: none;
+        background-color: rgb(237, 86, 86);
+        transition: linear ease-in-out 0.5s;
+      }
     }
   }
 
