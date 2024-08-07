@@ -1,9 +1,9 @@
 import { StrictMode, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { LoginPage, RootPage } from './pages';
+import { LoginPage, LayoutPage } from './pages';
 
 export function App() {
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(true);
 
   const handleLoginIn = () => {
     setLogged(true);
@@ -13,7 +13,7 @@ export function App() {
     return <LoginPage onLoginIn={handleLoginIn} />;
   }
 
-  return <RootPage />;
+  return <LayoutPage />;
 }
 
 const root = ReactDOM.createRoot(

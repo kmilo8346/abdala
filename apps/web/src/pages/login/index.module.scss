@@ -1,4 +1,13 @@
 .root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .form {
     position: relative;
     display: flex;
     padding: 30px 20px;
@@ -8,46 +17,39 @@
     flex-direction: column;
     border-radius: 10px;
     gap: 5px;
-}
-div{
-    display: flex;
-    flex-direction: column;
-}
-input {
-    text-align: center;
-    font-size: 12px;
-    padding: 5px 20px;
-    border-radius: 5px;
-    
-}
 
-button{
-    padding: 5px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: rgb(241, 127, 127);
-    color: #fff;
-    box-shadow: none;
-}
+    .formItem {
+      display: flex;
+      flex-direction: column;
 
-button:hover{
-    box-shadow: none;
-    background-color: rgb(237, 86, 86);
-    transition: linear ease-in-out 0.5s;
-}
+      input {
+        text-align: center;
+        font-size: 12px;
+        padding: 5px 20px;
+        border-radius: 5px;
+      }
+    }
 
-p{
+    button {
+      padding: 5px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: rgb(241, 127, 127);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    button:hover {
+      box-shadow: none;
+      background-color: rgb(237, 86, 86);
+      transition: linear ease-in-out 0.5s;
+    }
+  }
+
+  p {
     font-size: 12px;
     text-align: center;
     margin-top: 5px;
     cursor: pointer;
+  }
 }
-
-
-
-
-
-
-
-
-

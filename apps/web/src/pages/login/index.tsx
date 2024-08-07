@@ -71,9 +71,9 @@ export function LoginPage(props: LoginPageProps) {
   // }
 
   return (
-    <>
-      <div className={styles.root}>
-        <div>
+    <div className={styles.root}>
+      <div className={styles.form}>
+        <div className={styles.formItem}>
           <input
             type="email"
             name="email"
@@ -83,7 +83,7 @@ export function LoginPage(props: LoginPageProps) {
           />
           {errors.email && <span className={styles.error}>{errors.email}</span>}
         </div>
-        <div>
+        <div className={styles.formItem}>
           <input
             type="password"
             name="password"
@@ -98,7 +98,7 @@ export function LoginPage(props: LoginPageProps) {
         <button onClick={handleLogin}>Log In</button>
       </div>
       <p>Create Account</p>
-    </>
+    </div>
   );
 }
 
