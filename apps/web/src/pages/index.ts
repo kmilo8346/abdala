@@ -1,2 +1,2 @@
 export { LoginPage } from './login';
-export { RootPage } from './root';
+export { LayoutPage } from './layout';

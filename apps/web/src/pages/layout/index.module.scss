@@ -1,0 +1,29 @@
+.root {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .header {
+    padding: 0 24px;
+    min-height: 80px;
+    background: blue;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 100px;
+      height: 50px;
+      background-color: gray;
+    }
+
+    .menu {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+  }
+
+  .body {
+    width: 100%;
+  }
+}
