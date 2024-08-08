@@ -10,7 +10,7 @@ import { CoursesPage } from '../courses';
 import { CreationsPage } from '../creations';
 import { MyCoursesPage } from '../my-courses';
 
-// TODO:
+// TODO: Kiko
 // 1- Agregar un logo al header
 // 2- Aregar el ícono de usuario al header
 // 3- Mejora el diseño del menu en el header, tiene que mostrar cuando se haga header
