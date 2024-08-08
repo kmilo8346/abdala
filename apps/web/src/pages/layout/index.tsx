@@ -15,7 +15,7 @@ import { MyCoursesPage } from '../my-courses';
 // 2- Aregar el ícono de usuario al header
 // 3- Mejora el diseño del menu en el header, tiene que mostrar cuando se haga header
 
-// TODO
+// TODO:
 // ** El card es un componente reutilizable **
 // 1- Crear pagina de cursos
 // 2- Crear pagina de creaciones
