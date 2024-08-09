@@ -9,6 +9,11 @@ import styles from './index.module.scss';
 import { CoursesPage } from '../courses';
 import { CreationsPage } from '../creations';
 import { MyCoursesPage } from '../my-courses';
+import { CourseFrontEnd } from '../courseFrontEnd';
+import { CourseBackEnd } from '../CourseBackEnd';
+
+import Logo from "../../assets/logo/Logo.png"
+import User from "../../assets/iconos/User.png"
 
 // TODO:
 // 1- Agregar un logo al header
@@ -24,19 +29,30 @@ import { MyCoursesPage } from '../my-courses';
 export function LayoutPage() {
   const handleLogoClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(event);
+  
+  };
+  const handleUserClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    console.log(event);
+  
   };
 
   return (
     <Router>
       <div className={styles.root}>
         <header className={styles.header}>
-          <div className={styles.logo} onClick={handleLogoClick} />
+          <div className={styles.logo} onClick={handleLogoClick}>
+            <img className={styles.img} alt='Logo' src={Logo}/>
+          </div>
 
           <div className={styles.menu}>
             <a href="/courses">Courses</a>
+            <a href="/my-courses">My Courses</a>
             <a href="/creations">Creations</a>
-            <a href="/creations">Creations</a>
+            <div className={styles.user} onClick={handleUserClick}>
+              <img src={User} className={styles.img} alt='User-Img'></img>
+            </div>
           </div>
+          
         </header>
         <section className={styles.body}>
           <br />
@@ -45,6 +61,8 @@ export function LayoutPage() {
           <Routes>
             <Route path="/" element={<Navigate to="/courses" />} />
             <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/courseFrontEnd" element={<CourseFrontEnd />} />
+            <Route path="/courseBackEnd" element={<CourseBackEnd />} />
             <Route path="/creations" element={<CreationsPage />} />
             <Route path="/my-courses" element={<MyCoursesPage />} />
           </Routes>
