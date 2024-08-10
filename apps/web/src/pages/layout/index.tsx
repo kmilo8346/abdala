@@ -31,10 +31,16 @@ export function LayoutPage() {
     console.log(event);
   
   };
+  
+
   const handleUserClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(event);
   
   };
+
+  const handleUserHover = (event: React.MouseEvent<HTMLDivElement>) => {
+    console.log(event);
+  }
 
   return (
     <Router>
@@ -48,7 +54,7 @@ export function LayoutPage() {
             <a href="/courses">Courses</a>
             <a href="/my-courses">My Courses</a>
             <a href="/creations">Creations</a>
-            <div className={styles.user} onClick={handleUserClick}>
+            <div className={styles.user} onMouseEnter={handleUserHover} onClick={handleUserClick}>
               <img src={User} className={styles.img} alt='User-Img'></img>
             </div>
           </div>
@@ -73,3 +79,8 @@ export function LayoutPage() {
 }
 
 export default LayoutPage;
+
+//  interface UserProps {
+//  onClick: () => void;
+//  onHover: () => void;
+//  }

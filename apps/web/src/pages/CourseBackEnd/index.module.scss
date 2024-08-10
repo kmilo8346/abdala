@@ -3,6 +3,13 @@
     height: 100%;
     margin-bottom: 100px;
 
+    .title {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     h1{
         text-align:left;
         font-size: 30px;

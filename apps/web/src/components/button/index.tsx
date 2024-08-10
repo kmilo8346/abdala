@@ -1,7 +1,13 @@
 import styles from './index.module.scss';
 
-export function Button() {
-  return <div className={styles.root}>Button component here</div>;
+interface ButtonProps {
+  onClick: ()=> void;
+}
+
+export function Button({onClick}: ButtonProps) {
+  return <div className={styles.root} onClick={onClick}>
+    <button>Subscribe</button>
+  </div>;
 }
 
 export default Button;
