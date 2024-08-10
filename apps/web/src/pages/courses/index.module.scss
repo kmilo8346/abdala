@@ -3,6 +3,7 @@
     height: 100%;
     margin-bottom: 100px;
     
+    
 
     h1{
         text-align:left;
@@ -15,18 +16,34 @@
     }
 
     .FrontEnd{
+        position: relative;
         display: flex;
-        width: 100%
+        width: 100%;
+        justify-content: space-around;
     }
 
     .BackEnd{
+        position: relative;
         display: flex;
-        width: 100%
+        width: 100%;
+        justify-content: space-around;
     }
 
     p{
+        width: 100%;
+    }
+
+    .info{
         width: 50%;
-        margin-left: 10%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button{
+            margin-top: 40px;
+        }
     }
 
     

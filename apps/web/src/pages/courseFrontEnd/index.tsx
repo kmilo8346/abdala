@@ -12,6 +12,7 @@ import JavaScr from "../../assets/cursos/front-end/JavaScr.png"
 import JS from "../../assets/cursos/front-end/JS.png"
 import JS1 from "../../assets/cursos/front-end/JS1.png"
 import JS2 from "../../assets/cursos/front-end/JS2.png"
+import { Button } from '../../components';
 
 
 
@@ -46,7 +47,10 @@ const coursesJavaScript: CoursesList[] = [
 export function CourseFrontEnd() {
   return (
     <div className={styles.root}>
+      <div className={styles.title}>
       <h1>Front-End</h1>
+      <Button />
+      </div>
       
       
       <h2>HTML</h2>
