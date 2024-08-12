@@ -40,7 +40,7 @@ export function LoginPage(props: LoginPageProps) {
 
     if (password.length === 0) {
       newErrors.password = 'Password is required';
-    } else if (password.length <= 8) {
+    } else if (password.length <= 7) {
       newErrors.password = 'Password needs at least 8 characters';
     }
 

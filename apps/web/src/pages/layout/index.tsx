@@ -5,6 +5,8 @@ import {
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
+import { useState,  } from 'react';
+
 import styles from './index.module.scss';
 import { CoursesPage } from '../courses';
 import { CreationsPage } from '../creations';
@@ -14,6 +16,7 @@ import { CourseBackEnd } from '../CourseBackEnd';
 
 import Logo from "../../assets/logo/Logo.png"
 import User from "../../assets/iconos/User.png"
+import LoginPage from '../login';
 
 // TODO:
 // 1- Agregar un logo al header
@@ -26,20 +29,20 @@ import User from "../../assets/iconos/User.png"
 // 2- Crear pagina de creaciones
 // 3- Crear pagina de mis cursos
 
+
 export function LayoutPage() {
   const handleLogoClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(event);
-  
   };
-  
 
-  const handleUserClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log(event);
-  
-  };
+  const [userMenuVisible, setUserMenuVisible] = useState(false);
 
   const handleUserHover = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log(event);
+    setUserMenuVisible (true);
+  }
+
+  const handleUserLeave = (event: React.MouseEvent<HTMLDivElement>) => {
+    setUserMenuVisible(false);
   }
 
   return (
@@ -54,8 +57,13 @@ export function LayoutPage() {
             <a href="/courses">Courses</a>
             <a href="/my-courses">My Courses</a>
             <a href="/creations">Creations</a>
-            <div className={styles.user} onMouseEnter={handleUserHover} onClick={handleUserClick}>
+            <div className={styles.user} onMouseEnter={handleUserHover} onMouseLeave={handleUserLeave}>
               <img src={User} className={styles.img} alt='User-Img'></img>
+              {userMenuVisible && (
+              <div className={styles.userMenu}>
+              <a href='/login' className={styles.userMenuItem}>Close Section</a>
+            </div>
+            )}
             </div>
           </div>
           
