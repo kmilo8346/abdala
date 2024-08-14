@@ -13,10 +13,12 @@ import { CreationsPage } from '../creations';
 import { MyCoursesPage } from '../my-courses';
 import { CourseFrontEnd } from '../courseFrontEnd';
 import { CourseBackEnd } from '../CourseBackEnd';
+import { CreateUserPage } from '../create-user';
 
 import Logo from "../../assets/logo/Logo.png"
 import User from "../../assets/iconos/User.png"
 import LoginPage from '../login';
+
 
 // TODO:
 // 1- Agregar un logo al header
@@ -57,6 +59,7 @@ export function LayoutPage() {
             <a href="/courses">Courses</a>
             <a href="/my-courses">My Courses</a>
             <a href="/creations">Creations</a>
+            <a href="/create-user">Crear Usuario</a>
             <div className={styles.user} onMouseEnter={handleUserHover} onMouseLeave={handleUserLeave}>
               <img src={User} className={styles.img} alt='User-Img'></img>
               {userMenuVisible && (

@@ -97,7 +97,7 @@ export function LoginPage(props: LoginPageProps) {
         </div>
         <button onClick={handleLogin}>Log In</button>
       </div>
-      <p>Create Account</p>
+      <a href='/create-user'>Create Account</a>
     </div>
   );
 }
