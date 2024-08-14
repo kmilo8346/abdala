@@ -1,37 +1,23 @@
 import { StrictMode, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { LoginPage, LayoutPage, CreateUserPage } from './pages';
+import NotAuthenticatedPage from './pages/not-authenticated/layout';
+import AuthenticatedPage from './pages/authenticated/layout';
 
 export function App() {
-  const [logged, setLogged] = useState(false);
-  const [userCreated, setUserCreated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
-  const handleLoginIn = () => {
-    setLogged(true);
+  const handleAuthenticated = () => {
+    setAuthenticated(true);
   };
 
-  const handleCreateUser = () => {
-    setUserCreated(true);
-  };
-
-  if (!logged) {
-    return <LoginPage onLoginIn={handleLoginIn} />;
+  if (!authenticated) {
+    return <NotAuthenticatedPage onAuthenticated={handleAuthenticated} />;
   }
 
-
-  if (!userCreated) {
-    return <CreateUserPage userCreated={handleCreateUser} />;
-  }
-
-  
-  return <LayoutPage />;
+  return <AuthenticatedPage />;
 }
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+root.render(<App />);

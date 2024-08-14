@@ -5,20 +5,17 @@ import {
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
-import { useState,  } from 'react';
+import { useState } from 'react';
 
 import styles from './index.module.scss';
 import { CoursesPage } from '../courses';
 import { CreationsPage } from '../creations';
 import { MyCoursesPage } from '../my-courses';
-import { CourseFrontEnd } from '../courseFrontEnd';
-import { CourseBackEnd } from '../CourseBackEnd';
-import { CreateUserPage } from '../create-user';
 
-import Logo from "../../assets/logo/Logo.png"
-import User from "../../assets/iconos/User.png"
-import LoginPage from '../login';
-
+import Logo from '../../../assets/logo/Logo.png';
+import User from '../../../assets/iconos/User.png';
+import LoginPage from '../../not-authenticated/login';
+import CourseDetailPage from '../course-detail';
 
 // TODO:
 // 1- Agregar un logo al header
@@ -31,7 +28,6 @@ import LoginPage from '../login';
 // 2- Crear pagina de creaciones
 // 3- Crear pagina de mis cursos
 
-
 export function LayoutPage() {
   const handleLogoClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(event);
@@ -40,36 +36,41 @@ export function LayoutPage() {
   const [userMenuVisible, setUserMenuVisible] = useState(false);
 
   const handleUserHover = (event: React.MouseEvent<HTMLDivElement>) => {
-    setUserMenuVisible (true);
-  }
+    setUserMenuVisible(true);
+  };
 
   const handleUserLeave = (event: React.MouseEvent<HTMLDivElement>) => {
     setUserMenuVisible(false);
-  }
+  };
 
   return (
     <Router>
       <div className={styles.root}>
         <header className={styles.header}>
           <div className={styles.logo} onClick={handleLogoClick}>
-            <img className={styles.img} alt='Logo' src={Logo}/>
+            <img className={styles.img} alt="Logo" src={Logo} />
           </div>
 
           <div className={styles.menu}>
-            <a href="/courses">Courses</a>
-            <a href="/my-courses">My Courses</a>
-            <a href="/creations">Creations</a>
-            <a href="/create-user">Crear Usuario</a>
-            <div className={styles.user} onMouseEnter={handleUserHover} onMouseLeave={handleUserLeave}>
-              <img src={User} className={styles.img} alt='User-Img'></img>
+            <Link to="/courses">Courses</Link>
+            <Link to="/my-courses">My Courses</Link>
+            <Link to="/creations">Creations</Link>
+            <div
+              className={styles.user}
+              onMouseEnter={handleUserHover}
+              onMouseLeave={handleUserLeave}
+            >
+              <img src={User} className={styles.img} alt="User-Img"></img>
               {userMenuVisible && (
-              <div className={styles.userMenu}>
-              <a href='/login' className={styles.userMenuItem}>Close Section</a>
-            </div>
-            )}
+                <div className={styles.userMenu}>
+                  {/* Cambiarlo */}
+                  <a href="/login" className={styles.userMenuItem}>
+                    Close Section
+                  </a>
+                </div>
+              )}
             </div>
           </div>
-          
         </header>
         <section className={styles.body}>
           <br />
@@ -78,10 +79,10 @@ export function LayoutPage() {
           <Routes>
             <Route path="/" element={<Navigate to="/courses" />} />
             <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/courseFrontEnd" element={<CourseFrontEnd />} />
-            <Route path="/courseBackEnd" element={<CourseBackEnd />} />
+            <Route path="/courses/:id" element={<CourseDetailPage />} />
             <Route path="/creations" element={<CreationsPage />} />
             <Route path="/my-courses" element={<MyCoursesPage />} />
+            <Route path="*" element={<div>Not Found</div>} />
           </Routes>
         </section>
       </div>

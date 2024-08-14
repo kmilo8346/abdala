@@ -9,7 +9,7 @@ interface CardProps {
 export function Cards({ name, imgUrl, onClick }: CardProps) {
   return (
     <div className={styles.card} onClick={onClick}>
-      <img src={imgUrl} alt='Imagen' />
+      <img src={imgUrl} alt="Imagen" />
       <h3 className={styles.cardName}>{name}</h3>
     </div>
   );
