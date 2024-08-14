@@ -1,28 +1,20 @@
 import { useState, ChangeEvent } from 'react';
 import styles from './index.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface Errors {
   email?: string;
   password?: string;
+  confirmPassword?: string;
+  yourName?: string;
 }
 
-interface LoginPageProps {
-  onLoginIn: () => void;
-}
-
-export function LoginPage(props: LoginPageProps) {
-  const handleLogin = () => {
-    if (validateForm()) {
-      // Enviar usuario y password a la server
-      // Si el usuario y password son correctos
-      // Guardar el token(llave) en el local storage
-      // Llama a la funcion onLoginIn
-      props.onLoginIn();
-    }
-  };
-
+export function SignupPage() {
+  const navigate = useNavigate();
+  const [yourName, setYourName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState<Errors>({});
 
   const validateEmail = (email: string): boolean => {
@@ -44,6 +36,14 @@ export function LoginPage(props: LoginPageProps) {
       newErrors.password = 'Password needs at least 8 characters';
     }
 
+    if (password !== confirmPassword) {
+      newErrors.confirmPassword = 'password Don`t Match';
+    }
+
+    if (yourName.length === 0) {
+      newErrors.yourName = 'Name is required';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -54,25 +54,38 @@ export function LoginPage(props: LoginPageProps) {
       setEmail(value);
     } else if (name === 'password') {
       setPassword(value);
+    } else if (name === 'confirmPassword') {
+      setConfirmPassword(value);
+    } else if (name === 'yourName') {
+      setYourName(value);
     }
   };
 
-  // Tarea
-  // Pinta un formulario
-  // Con usuario y contraseña
-  // Y un boton de enviar
-  // El usuario y contraseña se guardan en el estado
-  // Validaciones
-  // - usuario y contraseña son requeridos
-  // - El usuario tiene que ser un email
-  // function validateEmail(email) {
-  //   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return re.test(String(email).toLowerCase());
-  // }
+  const handleCreate = () => {
+    console.log('Handle Create called');
+    if (validateForm()) {
+      console.log('Form is valid');
+      navigate('/');
+    } else {
+      console.log('Form is invalid');
+    }
+  };
 
   return (
     <div className={styles.root}>
       <div className={styles.form}>
+        <div className={styles.formItem}>
+          <input
+            type="text"
+            name="yourName"
+            placeholder="Type your name"
+            value={yourName}
+            onChange={handleChange}
+          />
+          {errors.yourName && (
+            <span className={styles.error}>{errors.yourName}</span>
+          )}
+        </div>
         <div className={styles.formItem}>
           <input
             type="email"
@@ -91,15 +104,27 @@ export function LoginPage(props: LoginPageProps) {
             value={password}
             onChange={handleChange}
           />
+
           {errors.password && (
             <span className={styles.error}>{errors.password}</span>
           )}
         </div>
-        <button onClick={handleLogin}>Log In</button>
+        <div className={styles.formItem}>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            value={confirmPassword}
+            onChange={handleChange}
+          />
+          {errors.confirmPassword && (
+            <span className={styles.error}>{errors.confirmPassword}</span>
+          )}
+        </div>
+        <button onClick={handleCreate}>Create User</button>
       </div>
-      <a href='/create-user'>Create Account</a>
     </div>
   );
 }
 
-export default LoginPage;
+export default SignupPage;
