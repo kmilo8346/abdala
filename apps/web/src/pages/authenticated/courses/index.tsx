@@ -1,12 +1,7 @@
-import styles from './index.module.scss';
-import { Cards } from '../../../components/cards';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../../components';
-import { ICourse } from 'apps/web/src/types/ICourse';
+import { CourseSection } from '../../../components/course-section';
 import courses from '../../../db/CoursesList';
-import { CourseSection } from '../../../components/course-section'
-
-
+import styles from './index.module.scss';
 
 export function CoursesPage() {
   const navigate = useNavigate();
@@ -25,7 +20,6 @@ export function CoursesPage() {
           data={course}
           onClick={() => handleNavigate(`/courses/${course.id}`)}
         />
-        
       ))}
     </div>
   );
