@@ -1,7 +1,7 @@
 import { ICourse } from 'apps/web/src/types/ICourse';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button } from '../../../components';
+import { Button } from '../../../components/button/suscribe';
 import { Cards } from '../../../components/cards';
 import courses from '../../../db/CoursesList';
 import styles from './index.module.scss';
@@ -23,7 +23,11 @@ export function CourseDetailPage() {
   }, []);
 
   if (!course) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.roott}>
+        <div className={styles.loading}>Loading...</div>
+      </div>
+    )
   }
 
   return (
@@ -36,7 +40,7 @@ export function CourseDetailPage() {
       {course.modules.map((module) => (
         <>
           <h2>{module.name}</h2>
-          <div className={styles.HTML}>
+          <div className={styles.modules}>
             {module.lessons.map((lesson, index) => (
               <Cards
                 key={index}
