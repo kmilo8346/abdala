@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Link,
   Navigate,
@@ -5,16 +6,14 @@ import {
   BrowserRouter as Router,
   Routes,
 } from 'react-router-dom';
-import { useState } from 'react';
 
-import styles from './index.module.scss';
 import { CoursesPage } from '../courses';
 import { CreationsPage } from '../creations';
 import { MyCoursesPage } from '../my-courses';
+import styles from './index.module.scss';
 
-import Logo from '../../../assets/logo/Logo.png';
 import User from '../../../assets/iconos/User.png';
-import LoginPage from '../../not-authenticated/login';
+import Logo from '../../../assets/logo/Logo.png';
 import CourseDetailPage from '../course-detail';
 
 export function LayoutPage() {
