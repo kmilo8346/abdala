@@ -5,6 +5,14 @@
       "path": "./apps/web/src"
     },
     {
+      "name": "🚀 Api",
+      "path": "./apps/api/src"
+    },
+    {
+      "name": "📦 Models",
+      "path": "./libs/models/src"
+    },
+    {
       "name": "Monorepo",
       "path": "."
     }
