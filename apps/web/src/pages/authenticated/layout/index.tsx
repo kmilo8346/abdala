@@ -17,11 +17,11 @@ import Logo from '../../../assets/logo/Logo.png';
 import CourseDetailPage from '../course-detail';
 
 export function LayoutPage() {
+  const [userMenuVisible, setUserMenuVisible] = useState(false);
+
   const handleLogoClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(event);
   };
-
-  const [userMenuVisible, setUserMenuVisible] = useState(false);
 
   const handleUserHover = (event: React.MouseEvent<HTMLDivElement>) => {
     setUserMenuVisible(true);
@@ -29,6 +29,14 @@ export function LayoutPage() {
 
   const handleUserLeave = (event: React.MouseEvent<HTMLDivElement>) => {
     setUserMenuVisible(false);
+  };
+
+  const handleLogogedOut = () => {
+    // 1- Cerrar sesión
+
+    // 2- Abrir el router de Not Authenticated
+    // llamando la url '/'
+    window.location.href = '/';
   };
 
   return (
@@ -50,10 +58,8 @@ export function LayoutPage() {
             >
               <img src={User} className={styles.img} alt="User-Img"></img>
               {userMenuVisible && (
-                <div className={styles.userMenu}>
-                  <Link to="/login" className={styles.userMenuItem}>
-                    Close Section
-                  </Link>
+                <div className={styles.userMenu} onClick={handleLogogedOut}>
+                  <div className={styles.userMenuItem}>Close Section</div>
                 </div>
               )}
             </div>
