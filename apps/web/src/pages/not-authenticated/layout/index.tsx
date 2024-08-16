@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import LoginPage from '../../not-authenticated/login';
 import SignupPage from '../../not-authenticated/signup';
+import styles from './index.module.scss';
 
 interface LayoutPageProps {
   onAuthenticated: () => void;
@@ -20,7 +21,7 @@ export function LayoutPage(props: LayoutPageProps) {
           element={<LoginPage onLoginIn={props.onAuthenticated} />}
         />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="*" element={<div>Not Found</div>} />
+        <Route path="*" element={<div className={styles.root}>Not Found</div>} />
       </Routes>
     </Router>
   );

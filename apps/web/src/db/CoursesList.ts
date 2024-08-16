@@ -4,9 +4,9 @@ import { ICourse } from '../types/ICourse';
 
 const courses: ICourse[] = [
   {
-    id: '1',
+    id: 'FrontEnd',
     name: 'FrontEnd',
-    description: 'FrontEnd',
+    description: 'FrontEnd Es un Curso que ...',
     image_url: HTML,
     modules: [
       {
@@ -33,9 +33,9 @@ const courses: ICourse[] = [
     ],
   },
   {
-    id: '2',
+    id: 'BackEnd',
     name: 'BackEnd',
-    description: 'BackEnd',
+    description: 'BackEnd Es un Curso que ...',
     image_url: BE,
     modules: [
       {
@@ -62,13 +62,13 @@ const courses: ICourse[] = [
     ],
   },
   {
-    id: '3',
+    id: 'IA',
     name: 'IA',
-    description: 'IA',
+    description: 'IA Es un Curso que ...',
     image_url: BE,
     modules: [
       {
-        name: 'IA',
+        name: 'Artificial intelligence',
         lessons: [
           {
             name: 'Introduccion a IA',
