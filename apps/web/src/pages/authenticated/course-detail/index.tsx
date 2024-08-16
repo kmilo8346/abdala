@@ -1,4 +1,4 @@
-import { ICourse } from 'apps/web/src/types/ICourse';
+import { ICourse } from '../../../types/ICourse';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../../components/button/suscribe';
@@ -27,7 +27,7 @@ export function CourseDetailPage() {
       <div className={styles.roott}>
         <div className={styles.loading}>Loading...</div>
       </div>
-    )
+    );
   }
 
   return (
