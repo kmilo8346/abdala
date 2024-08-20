@@ -11,6 +11,7 @@ import {
 import bcrypt from 'bcrypt';
 import { CreateUser, SearchUsersParams, UpdateUser } from '@abdala/models';
 import { UsersService } from './service';
+import { Public } from '../../../lib';
 
 @Controller('/v1/users')
 export class UsersController {
@@ -26,6 +27,7 @@ export class UsersController {
     return this.service.getAll(searchParams);
   }
 
+  @Public()
   @Post('/')
   async create(@Body() createUser: CreateUser) {
     // Actualiza el password convertido en hash

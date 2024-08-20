@@ -1,5 +1,8 @@
 import { useState, ChangeEvent } from 'react';
+import { authClient } from '../../../clients';
 import styles from './index.module.scss';
+import { authenticator } from '../../../lib/Authenticator';
+import { AxiosError } from 'axios';
 
 interface Errors {
   email?: string;
@@ -11,19 +14,31 @@ interface LoginPageProps {
 }
 
 export function LoginPage(props: LoginPageProps) {
-  const handleLogin = () => {
-    if (validateForm()) {
-      // Enviar usuario y password a la server
-      // Si el usuario y password son correctos
-      // Guardar el token(llave) en el local storage
-      // Llama a la funcion onLoginIn
-      props.onLoginIn();
-    }
-  };
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Errors>({});
+
+  const handleLogin = async () => {
+    if (validateForm()) {
+      try {
+        // Enviar usuario y password a la server
+        const response = await authClient.login(email, password);
+        // Si el usuario y password son correctos
+        // Guardar el token(llave) en el local storage
+        authenticator.signIn(response);
+        // Llama a la funcion onLoginIn
+        props.onLoginIn();
+      } catch (error) {
+        console.error('Failed to login', error);
+
+        if ((error as AxiosError).response?.status === 400) {
+          alert('Credenciales incorrectas');
+        } else {
+          alert('Ocurrió un error inesperado');
+        }
+      }
+    }
+  };
 
   const validateEmail = (email: string): boolean => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -23,7 +23,10 @@ export class AuthService {
       size: 1,
     });
     if (response.total === 0) {
-      throw new HttpException('Authentication failed', HttpStatus.UNAUTHORIZED);
+      throw new HttpException(
+        'User or password are invalid',
+        HttpStatus.BAD_REQUEST
+      );
     }
 
     // Validar si las credenciales son correctas
@@ -33,7 +36,10 @@ export class AuthService {
       user.password
     );
     if (!isPasswordValid) {
-      throw new HttpException('Authentication failed', HttpStatus.UNAUTHORIZED);
+      throw new HttpException(
+        'User or password are invalid',
+        HttpStatus.BAD_REQUEST
+      );
     }
 
     return user;

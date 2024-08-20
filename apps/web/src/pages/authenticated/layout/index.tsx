@@ -15,6 +15,7 @@ import styles from './index.module.scss';
 import User from '../../../assets/iconos/User.png';
 import Logo from '../../../assets/logo/Logo.png';
 import CourseDetailPage from '../course-detail';
+import { authenticator } from '../../../lib/Authenticator';
 
 export function LayoutPage() {
   const [userMenuVisible, setUserMenuVisible] = useState(false);
@@ -33,7 +34,7 @@ export function LayoutPage() {
 
   const handleLogogedOut = () => {
     // 1- Cerrar sesión
-
+    authenticator.signOut();
     // 2- Abrir el router de Not Authenticated
     // llamando la url '/'
     window.location.href = '/';

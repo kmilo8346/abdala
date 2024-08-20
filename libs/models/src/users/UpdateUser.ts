@@ -11,6 +11,11 @@ export class UpdateUser {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
+  name?: string;
+
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
   @IsEmail()
   username?: string;
 

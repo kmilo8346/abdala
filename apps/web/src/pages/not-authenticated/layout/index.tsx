@@ -21,7 +21,7 @@ export function LayoutPage(props: LayoutPageProps) {
           element={<LoginPage onLoginIn={props.onAuthenticated} />}
         />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="*" element={<div className={styles.root}>Not Found</div>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

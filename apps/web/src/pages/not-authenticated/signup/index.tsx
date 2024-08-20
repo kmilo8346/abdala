@@ -65,6 +65,7 @@ export function SignupPage() {
     console.log('Handle Create called');
     if (validateForm()) {
       console.log('Form is valid');
+      // Llamar al backend con la informacion del usuario
       navigate('/');
     } else {
       console.log('Form is invalid');
