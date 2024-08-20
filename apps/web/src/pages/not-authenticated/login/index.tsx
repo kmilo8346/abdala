@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from 'react';
 import { authClient } from '../../../clients';
 import styles from './index.module.scss';
 import { authenticator } from '../../../lib/Authenticator';
-import { AxiosError } from 'axios';
+import { AxiosError, isAxiosError } from 'axios';
 
 interface Errors {
   email?: string;
@@ -31,10 +31,13 @@ export function LoginPage(props: LoginPageProps) {
       } catch (error) {
         console.error('Failed to login', error);
 
-        if ((error as AxiosError).response?.status === 400) {
-          alert('Credenciales incorrectas');
-        } else {
-          alert('Ocurrió un error inesperado');
+        if (isAxiosError(error)) {
+          const _error = error as AxiosError;
+          if (_error.response?.status === 400) {
+            alert('Credenciales incorrectas');
+          } else {
+            alert('Ocurrió un error inesperado');
+          }
         }
       }
     }
