@@ -1,6 +1,9 @@
 import { useState, ChangeEvent } from 'react';
 import styles from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { userClient } from '../../../clients';
+import { authenticator } from '../../../lib/Authenticator';
+import { AxiosError, isAxiosError } from 'axios';
 
 interface Errors {
   email?: string;
@@ -61,16 +64,35 @@ export function SignupPage() {
     }
   };
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     console.log('Handle Create called');
     if (validateForm()) {
-      console.log('Form is valid');
-      // Llamar al backend con la informacion del usuario
-      navigate('/');
-    } else {
-      console.log('Form is invalid');
+
+      try {
+        const response = await  userClient.signUp(yourName, email, password);
+
+        authenticator.signIn(response);
+
+        navigate('/');
+
+        console.log('Form is valid');
+      } catch (error) {
+        console.error('Failed to sign up', error);
+        if (isAxiosError(error)) {
+          const _error = error as AxiosError;
+          if (_error.response?.status === 400) {
+            alert('No fue posible crear su usuario, informaciones incorrectas');
+          } else {
+            alert('Ocurrió un error inesperado');
+            console.log('Form is invalid');
     }
-  };
+          }
+        }
+      }
+      
+      // Llamar al backend con la informacion del usuario
+      
+    } 
 
   return (
     <div className={styles.root}>
