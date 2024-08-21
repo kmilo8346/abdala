@@ -71,7 +71,7 @@ export function SignupPage() {
       try {
         const response = await  userClient.signUp(yourName, email, password);
 
-        authenticator.signIn(response);
+       
 
         navigate('/');
 
