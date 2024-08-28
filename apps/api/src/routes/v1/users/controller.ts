@@ -54,4 +54,14 @@ export class UsersController {
   delete(@Param('id') id: string) {
     return this.service.delete(id);
   }
+
+  @Get('/:id/creations')
+  getCreations(@Param('id') id: string) {
+    return this.service.getCreations(id);
+  }
+
+  @Get('/:id/subscriptions')
+  getSubscriptions(@Param('id') id: string) {
+    return this.service.getSubscriptions(id);
+  }
 }

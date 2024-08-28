@@ -4,4 +4,5 @@ export class User extends Entity {
   name!: string;
   username!: string;
   password!: string;
+  subscriptions?: string[];
 }

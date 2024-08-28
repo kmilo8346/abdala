@@ -23,4 +23,9 @@ export class UpdateUser {
   @IsString()
   @IsNotEmpty()
   password?: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  subscriptions?: string[];
 }

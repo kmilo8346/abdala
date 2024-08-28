@@ -1,20 +1,20 @@
-import { ICourse } from '../../../types/ICourse';
+import { Course } from '@abdala/models';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../../components/button/suscribe';
-import { Cards } from '../../../components/cards';
-import courses from '../../../db/CoursesList';
 import styles from './index.module.scss';
+
+const courses: Course[] = [];
 
 export function CourseDetailPage() {
   const { id } = useParams();
-  const [course, setCourse] = useState<ICourse>();
+  const [course, setCourse] = useState<Course>();
 
   const handleBoot = async () => {
     // Buscar el curso en el backend usando el id
     // Cuando lo obtiene lo pone en el estado
     console.log(`Obtieniendo el curso para el id: ${id}`);
-    const found = courses.find((course: ICourse) => course.id === id);
+    const found = courses.find((course: Course) => course._id === id);
     setCourse(found);
   };
 
@@ -37,7 +37,7 @@ export function CourseDetailPage() {
         <Button onClick={() => {}} />
       </div>
 
-      {course.modules.map((module) => (
+      {/* {course.modules.map((module) => (
         <>
           <h2>{module.name}</h2>
           <div className={styles.modules}>
@@ -51,7 +51,7 @@ export function CourseDetailPage() {
             ))}
           </div>
         </>
-      ))}
+      ))} */}
     </div>
   );
 }

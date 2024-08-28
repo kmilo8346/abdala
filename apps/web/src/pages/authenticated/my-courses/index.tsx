@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { MyCourseSection } from '../../../components/my-courses-section';
-import courses from '../../../db/CoursesList';
 import styles from './index.module.scss';
+import { Course } from '@abdala/models';
+
+const courses: Course[] = [];
 
 export function MyCoursesPage() {
   const navigate = useNavigate();
@@ -16,9 +18,9 @@ export function MyCoursesPage() {
 
       {courses.map((course) => (
         <MyCourseSection
-          key={course.id}
+          key={course._id}
           data={course}
-          onClick={() => handleNavigate(`/courses/${course.id}`)}
+          onClick={() => handleNavigate(`/courses/${course._id}`)}
         />
       ))}
     </div>
