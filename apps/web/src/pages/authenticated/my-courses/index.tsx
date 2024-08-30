@@ -2,15 +2,42 @@ import { useNavigate } from 'react-router-dom';
 import { MyCourseSection } from '../../../components/my-courses-section';
 import styles from './index.module.scss';
 import { Course } from '@abdala/models';
+import { useEffect, useState } from 'react';
+import { userClient } from '../../../clients';
+import { authenticator } from '../../../lib';
 
-const courses: Course[] = [];
+
 
 export function MyCoursesPage() {
   const navigate = useNavigate();
+  const [booting, setBooting] = useState(true);
+  const [courses, setCourses] = useState<Course[]>([]);
 
   const handleNavigate = (path: string) => {
     navigate(path);
   };
+
+  const handleBoot = async () => {
+    const userId = authenticator.getUserInfo().sub;
+    const mySubscriptions = await userClient.getSubscriptions(userId);
+
+    setCourses(mySubscriptions);
+
+    setTimeout (() => {
+      setBooting(false);
+    },2000);
+  };
+
+  useEffect (() => {
+    handleBoot();
+    return () => {
+      //
+    };
+  }, []);
+
+  if (booting) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className={styles.root}>

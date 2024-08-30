@@ -19,6 +19,11 @@ class UserClient extends RESTClient {
     const response = await this.axios.get(`/users/${userId}/creations`);
     return response.data;
   }
+
+  async getSubscriptions (userId: string): Promise<Course[]> {
+    const response = await this.axios.get(`/users/${userId}/subscriptions`);
+    return response.data; 
+  }
 }
 
 export const userClient = new UserClient({
