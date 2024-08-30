@@ -17,7 +17,10 @@ export function CoursesPage() {
       size: 10,
     });
     setCourses(courses);
-    setBooting(false);
+
+    setTimeout(() => {
+      setBooting(false);
+    }, 2000);
   };
 
   const handleNavigate = (path: string) => {

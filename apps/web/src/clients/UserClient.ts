@@ -1,4 +1,4 @@
-import { User } from '@abdala/models';
+import { Course, User } from '@abdala/models';
 import RESTClient from '../lib/RESTClient';
 
 class UserClient extends RESTClient {
@@ -15,10 +15,16 @@ class UserClient extends RESTClient {
     return response.data;
   }
 
-  // getSubscriptions(userId)
-  // getCreations(userId)
+  async getCreations(userId: string): Promise<Course[]> {
+    const response = await this.axios.get(`/users/${userId}/creations`);
+    return response.data;
+  }
 }
 
 export const userClient = new UserClient({
   baseURL: 'http://localhost:3100/v1',
 });
+
+
+// getSubscriptions(userId)
+  // getCreations(userId) *HECHO*

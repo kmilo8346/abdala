@@ -14,17 +14,22 @@ export function MyCoursesPage() {
 
   return (
     <div className={styles.root}>
-      <h1>MY Courses :</h1>
+      <h1>My Courses :</h1>
 
-      {courses.map((course) => (
-        <MyCourseSection
-          key={course._id}
-          data={course}
-          onClick={() => handleNavigate(`/courses/${course._id}`)}
-        />
-      ))}
+      {courses.length === 0 ? (
+        <p className={styles.nota}> You have not subscribed to any courses yet.</p> 
+      ) : (
+        courses.map((course) => (
+          <MyCourseSection
+            key={course._id} 
+            data={course}
+            onClick={() => handleNavigate(`/courses/${course._id}`)}
+          />
+        ))
+      )}
     </div>
   );
+  
 }
 
 export default MyCoursesPage;
