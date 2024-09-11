@@ -41,7 +41,7 @@ export function MyCoursesPage() {
 
   return (
     <div className={styles.root}>
-      <h1>My Courses :</h1>
+      <h1>Subscriptions :</h1>
 
       {courses.length === 0 ? (
         <p className={styles.nota}> You have not subscribed to any courses yet.</p> 
