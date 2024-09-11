@@ -50,7 +50,7 @@ export function LayoutPage() {
 
           <div className={styles.menu}>
             <Link to="/courses">Courses</Link>
-            <Link to="/my-courses">My Courses</Link>
+            <Link to="/my-courses">Subscriptions</Link>
             <Link to="/creations">Creations</Link>
             <div
               className={styles.user}

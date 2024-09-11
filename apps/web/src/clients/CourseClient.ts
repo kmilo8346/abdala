@@ -9,6 +9,11 @@ class CourseClient extends RESTClient {
     return response.data;
   }
 
+  async getById(id: string): Promise<Course> {
+    const response = await this.axios.get(`/courses/${id}`,);
+    return response.data;
+  }
+
   // get by id
 }
 
