@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { authenticator } from './lib';
-import BootPage from './pages/boot';
+import BootPage from './pages/not-authenticated/boot';
 import AuthenticatedPage from './pages/authenticated/layout';
 import NotAuthenticatedPage from './pages/not-authenticated/layout';
 

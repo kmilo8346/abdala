@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { authenticator } from '../../lib/Authenticator';
+import { authenticator } from '../../../lib/Authenticator';
 
 interface BootPageProps {
   onBooted: () => void;
