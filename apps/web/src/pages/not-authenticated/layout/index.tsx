@@ -6,7 +6,7 @@ import {
   Routes,
 } from 'react-router-dom';
 import LoginPage from '../../not-authenticated/login-v2';
-import SignupPage from '../../not-authenticated/signup';
+import SignupPage from '../../not-authenticated/signup-v2';
 
 const { Content } = Layout;
 
