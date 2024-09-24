@@ -1,11 +1,11 @@
 import { Credentials } from '@abdala/models';
-import { Button, Card, Flex, Form, Input, Layout } from 'antd';
+import { Button, Card, Flex, Form, Input } from 'antd';
 import { AxiosError, isAxiosError } from 'axios';
 import { useState } from 'react';
 import { authClient } from '../../../clients';
 import { authenticator } from '../../../lib/Authenticator';
 
-const { Content } = Layout;
+
 
 interface LoginPageProps {
   onLoginIn: () => void;
@@ -77,7 +77,7 @@ export function LoginPage(props: LoginPageProps) {
             rules={[
               { required: true, message: 'Por favor, escriba el password' },
               {
-                min: 7,
+                min: 8,
                 message: 'La contraseña debe tener al menos 7 caracteres',
               },
             ]}
