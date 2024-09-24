@@ -19,7 +19,7 @@ export function SignupPage() {
 
       try {
         setLoading(true);
-        const response = await userClient.signUp(
+         await userClient.signUp(
           CreateUser.name,
           CreateUser.username,
           CreateUser.password
