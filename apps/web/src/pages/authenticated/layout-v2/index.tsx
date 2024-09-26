@@ -48,7 +48,7 @@ export function LayoutPage() {
               display: 'flex',
               alignItems: 'center',
               position: 'relative',
-              width: '40%',
+              width: '50%',
             }}
           >
             <img
