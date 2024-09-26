@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import LoginPage from '../../not-authenticated/login-v2';
 import SignupPage from '../../not-authenticated/signup-v2';
+import PlayGroundPage from '../playground';
 
 const { Content } = Layout;
 
@@ -26,6 +27,7 @@ export function LayoutPage(props: LayoutPageProps) {
             />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="*" element={<Navigate to="/" />} />
+            <Route path='/playGround' element={<PlayGroundPage />} />
           </Routes>
         </Router>
       </Content>
